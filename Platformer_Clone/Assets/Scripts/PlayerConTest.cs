@@ -18,7 +18,7 @@ public class PlayerConTest : MonoBehaviour
     void Update()
     {
         // side to side movement
-        if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
@@ -27,7 +27,7 @@ public class PlayerConTest : MonoBehaviour
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             Jump();
         }
@@ -39,3 +39,5 @@ public class PlayerConTest : MonoBehaviour
             Respawn();
         }
     }
+
+}
