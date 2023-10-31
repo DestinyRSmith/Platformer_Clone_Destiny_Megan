@@ -9,32 +9,40 @@ using UnityEngine;
 public class RegularBullet : MonoBehaviour
 {
     public float speed = 5f;
-    public bool facingRight;
-    public bool facingLeft;
+    public bool faceRight;
+    public bool faceLeft;
+
+    private Vector3 originPos;
+    public GameObject bulletPrefab;
+    public float spawnRate = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Starts the coroutine when the object is instantiated in the scene
         StartCoroutine(DespawnDelay());
+        // Starts the coroutine when the object is instantiated in the scene
+        // StartCoroutine(DespawnDelay());
     }
 
     // Update is called once per frame
     void Update()
     {
+        faceRight = GetComponent<PlayerConTest>().facingRight;
+        faceLeft = GetComponent<PlayerConTest>().facingLeft;
+        originPos = GetComponent<PlayerConTest>().transform.position;
         // If the bullet should move right, move it right, else move it left
-        if (facingRight)
+        if (faceRight == true && Input.GetKeyDown(KeyCode.P))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            originPos += Vector3.right * speed * Time.deltaTime;
         }
         else
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            originPos += Vector3.left * speed * Time.deltaTime;
         }
 
         // Need to add in player controller when the player turn right, going right
         // is now true and going left if false, and vice versa for facing left
-        if (facingLeft)
+        if (faceLeft == true && Input.GetKeyDown(KeyCode.P))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
@@ -42,6 +50,8 @@ public class RegularBullet : MonoBehaviour
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
+
+        
     }
     /// <summary>
     /// Yields before destroying the game object tagged "Bullet"
