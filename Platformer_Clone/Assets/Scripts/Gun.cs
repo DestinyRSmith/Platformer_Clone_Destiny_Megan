@@ -5,19 +5,33 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public float spawnRate = 2f;
-    public bool shootRight = false;
-    private Vector3 gunPos;
+    public GameObject player;
+    //public float spawnRate = 2f;
+    public bool shootRight;
+    public Vector3 gunPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("ShootBullet", 0, spawnRate);
+        
     }
 
     private void Update()
     {
-        gunPos = GetComponent<PlayerConTest>().transform.position;
+        transform.position = player.GetComponent<PlayerConTest>().transform.position;
+        gunPos = transform.position;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //InvokeRepeating("ShootBullet", 0, spawnRate);
+            ShootBullet();
+        }
+
+        if (player.GetComponent<PlayerConTest>().facingRight == true)
+        {
+            //gunPos = transform.position.x + 1;
+
+        }
     }
 
     /// <summary>
@@ -25,7 +39,10 @@ public class Gun : MonoBehaviour
     /// </summary>
     private void ShootBullet()
     {
-        GameObject laserInstance = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        laserInstance.GetComponent<RegularBullet>().faceRight = shootRight;
+        GameObject bulletDirection = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerConTest>().facingRight;
+        bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerConTest>().facingLeft;
+        bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerConTest>().transform.position;
+        bulletDirection.GetComponent<RegularBullet>().originPosLeft = player.GetComponent<PlayerConTest>().transform.position;
     }
 }

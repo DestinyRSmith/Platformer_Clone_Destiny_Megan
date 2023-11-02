@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01356f59f8def94ca8c1efda35f3348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  faceRight: 0
+  speed: 15
+  faceRight: 1
   faceLeft: 0
+  originPos: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 2979475064452088270}
   spawnRate: 2
