@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class HardEnemy : MonoBehaviour
 {
-    //public float travelDistanceRight = 0;
-    //public float travelDistanceLeft = 0;
     public float speed;
-
-    private float startingX;
-    private bool movingRight = true;
-    public PlayerController playerController;
+    public GameObject player;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        //when the scene starts store the inital x value of this object
-        startingX = transform.position.x;
+        offset = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerController == movingRight)
+        //FollowPlayer();
+    }
+    private void FollowPlayer()
+    {
+        //if player is to the right, go right
+        /*if (player.transform.position <= offset)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
-        else
+        //if player is to the left, go left
+        if (player)
         {
-            movingRight = false;
-        }
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }*/
+        //transform.position = player.transform.position + offset;
     }
 }

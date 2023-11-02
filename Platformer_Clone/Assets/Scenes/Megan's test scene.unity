@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fab1d0f9e9165c49a68228a88313bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  playerController: {fileID: 1966917991}
+  speed: 2
+  player: {fileID: 1966917985}
 --- !u!65 &134635376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   jumpForce: 10
   speed: 10
   totalHP: 99
-  blinkMechanics: {fileID: 1385082238}
+  canTakeDamage: 0
 --- !u!1 &2067945234
 GameObject:
   m_ObjectHideFlags: 0
