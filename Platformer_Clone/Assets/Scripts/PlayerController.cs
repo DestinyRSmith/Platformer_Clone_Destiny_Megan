@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public float totalHP = 99f;
     public bool canTakeDamage = true;
+    public bool firstHit = true;
 
     //public BlinkMechanic blinkMechanics;
 
@@ -42,17 +43,9 @@ public class PlayerController : MonoBehaviour
         GameOver();
         
     }
-    public IEnumerator SetInvincible()
-    {
-        if (canTakeDamage == false)
-        {
-            //totalHP = the current total hp, can't take damage
-        }
-        yield return new WaitForSeconds(5F);
-        canTakeDamage = true;
-    }
     public IEnumerator Blink()
     {
+        firstHit = false;
         for (int index = 0; index < 30; index++)
         {
             if (index % 2 == 0)
@@ -63,19 +56,27 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().enabled = true;
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(0.1667f);
         }
         GetComponent<MeshRenderer>().enabled = true;
+        firstHit = true;
     }
     private void OnTriggerEnter(Collider other)
     {
         //if player gets hit they lose 15HP and blink for 5 seconds
         if (other.gameObject.tag == "Enemy")
         {
-            totalHP = totalHP - 15f;
+            if (firstHit == true)
+            {
+                totalHP = totalHP - 15f;
+                StartCoroutine(Blink());
+            }
+            if (canTakeDamage == true)
+            {
+                totalHP = totalHP - 15f;
+            }
             Debug.Log("Total HP = " + totalHP);
-            StartCoroutine(Blink());
-            StartCoroutine(SetInvincible());
+            
         }
         //if player gets hit they lose 35HP and blink for 5 seconds
         if (other.gameObject.tag == "BigEnemy")
@@ -84,7 +85,6 @@ public class PlayerController : MonoBehaviour
             totalHP = totalHP - 35f;
             Debug.Log("Total HP = " + totalHP);
             StartCoroutine(Blink());
-            StartCoroutine(SetInvincible());
         }
         
     }

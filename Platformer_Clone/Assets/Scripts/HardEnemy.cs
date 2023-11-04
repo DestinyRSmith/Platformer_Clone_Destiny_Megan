@@ -6,18 +6,27 @@ public class HardEnemy : MonoBehaviour
 {
     public float speed;
     public GameObject player;
-    public Vector3 offset;
+    private float startingX;
+    private bool movingRight;
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position;
+        //when the scene starts store the inital x value of this object
+        startingX = transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FollowPlayer();
+       if (player.transform.position.x > transform.position.x)
+       {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+       }
+        else
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
     }
     private void FollowPlayer()
     {
