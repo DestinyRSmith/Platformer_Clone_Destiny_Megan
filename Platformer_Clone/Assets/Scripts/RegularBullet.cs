@@ -52,7 +52,6 @@ public class RegularBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
    
-
     private void ShootingRight()
     {
         transform.position += Vector3.right * speed * Time.deltaTime;

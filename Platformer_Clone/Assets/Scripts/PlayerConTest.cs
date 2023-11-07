@@ -9,7 +9,8 @@ public class PlayerConTest : MonoBehaviour
     public float speed = 10f;
     public float lives = 3;
     private Rigidbody rigidBodyRef;
-    public float jumpForce = 20f;
+    public float jumpForce = 5f;
+    public float jumpCount = 0f;
 
     // For Heavy Bullet Pack pick up item
     public bool regularBullets = true;
@@ -17,6 +18,8 @@ public class PlayerConTest : MonoBehaviour
     public bool facingRight;
     public bool facingLeft;
     public bool jumpPack = false;
+    public GameObject bullet;
+    public GameObject heavyBullet;
 
     public float totalHP = 99f;
     public float healthPack = 15f;
@@ -33,6 +36,8 @@ public class PlayerConTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        heavyBullet.gameObject.SetActive(false);
+        bullet.gameObject.SetActive(true);
         // side to side movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -50,6 +55,12 @@ public class PlayerConTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             Jump();
+        }
+
+        if (heavyBullets == true)
+        {
+            bullet.gameObject.SetActive(false);
+            heavyBullet.gameObject.SetActive(true);
         }
 
 
@@ -76,6 +87,7 @@ public class PlayerConTest : MonoBehaviour
         if (other.gameObject.tag == "JumpPack")
         {
             jumpPack = true;
+            other.gameObject.SetActive(false);
         }
 
         if (other.gameObject.tag == "HealthPack")
@@ -108,8 +120,19 @@ public class PlayerConTest : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.3f))
         {
-            rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                Debug.Log("Jumped.");
+                rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumpCount = 1;
+        }
+        else
+        {
+            if (jumpCount == 1f && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && jumpPack == true)
+            {
+                Debug.Log("Jumped Twice.");
+                rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumpCount++;
+            }
+            jumpCount = 0f;
         }
     }
-
 }

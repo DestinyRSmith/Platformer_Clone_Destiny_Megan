@@ -606,12 +606,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   lives: 3
-  jumpForce: 20
+  jumpForce: 5
+  jumpCount: 0
   regularBullets: 1
   heavyBullets: 0
   facingRight: 0
   facingLeft: 0
   jumpPack: 0
+  bullet: {fileID: 2979475064452088270, guid: 3886572da6d520d4e83dd385ed425ee0, type: 3}
+  heavyBullet: {fileID: 2979475064452088270, guid: 1c79f1bb68e636f458bae45139279ac2, type: 3}
   totalHP: 99
   healthPack: 15
   extraHealth: 100
@@ -991,9 +994,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2979475064452088270, guid: 3886572da6d520d4e83dd385ed425ee0, type: 3}
+  heavyBulletPrefab: {fileID: 2979475064452088270, guid: 1c79f1bb68e636f458bae45139279ac2, type: 3}
   player: {fileID: 1465467811}
   shootRight: 0
   gunPos: {x: 0, y: 0, z: 0}
+  canShoot: 1
 --- !u!65 &1792188234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1009,7 +1014,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1074,7 +1079,7 @@ Transform:
   m_GameObject: {fileID: 1792188232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04, y: 1.05, z: 0}
+  m_LocalPosition: {x: 1.01, y: 1.05, z: 0}
   m_LocalScale: {x: 0.37244, y: 0.37244, z: 0.37244}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1181,7 +1186,7 @@ Transform:
   m_GameObject: {fileID: 1839066426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.17, y: 1.22, z: -0.69305}
+  m_LocalPosition: {x: 7.17, y: 1.22, z: 0}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []
