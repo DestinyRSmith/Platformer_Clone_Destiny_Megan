@@ -5,23 +5,24 @@ using UnityEngine;
 public class PlayerConTest : MonoBehaviour
 {
     private Vector3 startPosition;
-    private float deathY = -5;
-    private float speed = 10f;
+    //private float deathY = -20f;
+    public float speed = 10f;
     public float lives = 3;
     private Rigidbody rigidBodyRef;
-    public float jumpForce = 5f;
+    public float jumpForce = 20f;
 
     // For Heavy Bullet Pack pick up item
     public bool regularBullets = true;
     public bool heavyBullets = false;
     public bool facingRight;
     public bool facingLeft;
+    public bool jumpPack = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
         rigidBodyRef = GetComponent<Rigidbody>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -46,16 +47,18 @@ public class PlayerConTest : MonoBehaviour
             Jump();
         }
 
-        // Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.3f, Color.red);
 
+        // Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.3f, Color.red);
+/*
         if (transform.position.y <= deathY)
         {
             lives--;
             transform.position = startPosition;
         }
+*/
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "HeavyBulletPack")
         {
@@ -64,9 +67,17 @@ public class PlayerConTest : MonoBehaviour
             heavyBullets = true;
             other.gameObject.SetActive(false);
         }
+        
+        if (other.gameObject.tag == "JumpPack")
+        {
+            jumpPack = true;
+        }
 
     }
 
+    /// <summary>
+    /// Gives ability for to the player to raise Y coordinate to 'jump'
+    /// </summary>
     private void Jump()
     {
         RaycastHit hit;

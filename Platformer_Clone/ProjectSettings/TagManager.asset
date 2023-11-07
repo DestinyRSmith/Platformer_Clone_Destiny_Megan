@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - BigEnemy
   - HealthScreen
+  - HeavyBulletPack
+  - JumpPack
   layers:
   - Default
   - TransparentFX
