@@ -10,6 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private float startingX;
     private bool movingRight = true;
+    public float totalEnemyHP = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,22 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 movingRight = true;
             }
+        }
+        
+        if (totalEnemyHP == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            totalEnemyHP = totalEnemyHP - 1f;
+        }
+        if (other.gameObject.tag == "HeavyBulletPack")
+        {
+            totalEnemyHP = totalEnemyHP - 3f;
         }
     }
 }

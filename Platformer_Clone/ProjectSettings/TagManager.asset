@@ -12,6 +12,7 @@ TagManager:
   - JumpPack
   - HealthPack
   - ExtraHealth
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HardEnemy : MonoBehaviour
 {
     public float speed;
+    public float hardEnemyHP = 10f;
     public GameObject player;
     private float startingX;
     private bool movingRight;
@@ -27,19 +28,20 @@ public class HardEnemy : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-    }
-    private void FollowPlayer()
-    {
-        //if player is to the right, go right
-        /*if (player.transform.position <= offset)
+        if (hardEnemyHP == 0)
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            Destroy(this.gameObject);
         }
-        //if player is to the left, go left
-        if (player)
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-        }*/
-        //transform.position = player.transform.position + offset;
+            hardEnemyHP = hardEnemyHP - 1f;
+        }
+        if (other.gameObject.tag == "HeavyBulletPack")
+        {
+            hardEnemyHP = hardEnemyHP - 3f;
+        }
     }
 }
