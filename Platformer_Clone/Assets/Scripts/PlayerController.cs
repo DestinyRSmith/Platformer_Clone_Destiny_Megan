@@ -5,19 +5,33 @@ using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
+   // variables for movement
+    private Vector3 startPosition;
     public float jumpForce = 15f;
     private Rigidbody rigidBodyRef;
     public float speed = 10f;
+    public bool facingRight;
+    public bool facingLeft;
+
+    // variables for health
     public float totalHP = 99f;
     public bool canTakeDamage = true;
     public bool firstHit = true;
+    public float healthPack = 15f;
+    public float extraHealth = 100f;
+    public bool hasExtraHealth = false;
+
+    // variables for bullets
+    public bool regularBullets = true;
+    public bool heavyBullets = false;
 
     //public BlinkMechanic blinkMechanics;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidBodyRef = GetComponent<Rigidbody>(); 
+        rigidBodyRef = GetComponent<Rigidbody>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -27,10 +41,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+            facingLeft = true;
+            facingRight = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+            facingLeft = false;
+            facingRight = true;
         }
 
         //Jumping
@@ -86,7 +104,37 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Total HP = " + totalHP);
             StartCoroutine(Blink());
         }
-        
+
+        if (other.gameObject.tag == "HeavyBulletPack")
+        {
+            // turns off the prefab for regular bullet and turns on the prefab for heavy bullets.
+            regularBullets = false;
+            heavyBullets = true;
+            other.gameObject.SetActive(false);
+        }
+
+        // heals the player 15 HP
+        if (other.gameObject.tag == "HealthPack")
+        {
+            if (totalHP <= 84f || hasExtraHealth == true && totalHP <= 184f)
+            {
+                totalHP = totalHP + healthPack;
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Your health is too full.");
+            }
+        }
+
+        // adds 100 HP to max health
+        if (other.gameObject.tag == "ExtraHealth")
+        {
+            hasExtraHealth = true;
+            totalHP = totalHP + 100f;
+            other.gameObject.SetActive(false);
+        }
+
     }
     private void HandleJump()
     {

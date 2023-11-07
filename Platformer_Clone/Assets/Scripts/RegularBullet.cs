@@ -15,21 +15,18 @@ public class RegularBullet : MonoBehaviour
     public Vector3 originPosRight;
     public Vector3 originPosLeft;
     public GameObject bulletPrefab;
-    //public float spawnRate = 2f;
+
 
     // Start is called before the first frame update
     void Start()
     {
             StartCoroutine(DespawnDelay());
         // Starts the coroutine when the object is instantiated in the scene
-        // StartCoroutine(DespawnDelay());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.position = originPosRight;
-        //transform.position = originPosLeft;
 
         // If the bullet should move right, move it right, else move it left
         if (faceRight == true)
@@ -37,9 +34,6 @@ public class RegularBullet : MonoBehaviour
             ShootingRight();
             
         }
-
-        // Need to add in player controller when the player turn right, going right
-        // is now true and going left if false, and vice versa for facing left
         
         if (faceLeft == true)
         {

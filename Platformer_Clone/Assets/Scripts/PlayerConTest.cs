@@ -18,6 +18,11 @@ public class PlayerConTest : MonoBehaviour
     public bool facingLeft;
     public bool jumpPack = false;
 
+    public float totalHP = 99f;
+    public float healthPack = 15f;
+    public float extraHealth = 100f;
+    public bool hasExtraHealth = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +78,25 @@ public class PlayerConTest : MonoBehaviour
             jumpPack = true;
         }
 
+        if (other.gameObject.tag == "HealthPack")
+        {
+            if (totalHP <= 84f || hasExtraHealth == true && totalHP <= 184f)
+            {
+                totalHP = totalHP + healthPack;
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Your health is too full.");
+            }
+        }
+
+        if (other.gameObject.tag == "ExtraHealth")
+        {
+            hasExtraHealth = true;
+            totalHP = totalHP + 100f;
+            other.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>

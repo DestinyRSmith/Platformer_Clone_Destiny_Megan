@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void Update()
@@ -21,16 +21,9 @@ public class Gun : MonoBehaviour
         transform.position = player.GetComponent<PlayerConTest>().transform.position;
         gunPos = transform.position;
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            //InvokeRepeating("ShootBullet", 0, spawnRate);
             ShootBullet();
-        }
-
-        if (player.GetComponent<PlayerConTest>().facingRight == true)
-        {
-            //gunPos = transform.position.x + 1;
-
         }
     }
 

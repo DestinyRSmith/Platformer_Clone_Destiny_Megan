@@ -10,6 +10,8 @@ TagManager:
   - HealthScreen
   - HeavyBulletPack
   - JumpPack
+  - HealthPack
+  - ExtraHealth
   layers:
   - Default
   - TransparentFX
