@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Megan Mix
+/// 11/09/23
+/// Regular Enemy mechanics; moves left and right; dies if HP reaches 0
+/// </summary>
 public class NewBehaviourScript : MonoBehaviour
 {
     public float travelDistanceRight = 0;

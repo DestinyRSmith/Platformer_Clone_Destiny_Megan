@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Megan Mix 
+/// 11/09/23
+/// Camera Player tracking
+/// </summary>
 public class CameraTracking : MonoBehaviour
 {
     public GameObject player;

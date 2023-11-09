@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Megan Mix & Destiny Smith
+/// 11/09/23
+/// Main Player Controller Script
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
    // variables for movement
@@ -112,10 +116,29 @@ public class PlayerController : MonoBehaviour
         //if player gets hit they lose 35HP and blink for 5 seconds
         if (other.gameObject.tag == "BigEnemy")
         {
-            //when hard enemy hits, you lose 35HP
-            totalHP = totalHP - 35f;
+            if (firstHit == true)
+            {
+                totalHP = totalHP - 35f;
+                StartCoroutine(Blink());
+            }
+            if (canTakeDamage == true)
+            {
+                totalHP = totalHP - 35f;
+            }
             Debug.Log("Total HP = " + totalHP);
-            StartCoroutine(Blink());
+        }
+        if (other.gameObject.tag == "BossEnemy")
+        {
+            if (firstHit == true)
+            {
+                totalHP = totalHP - 20f;
+                StartCoroutine(Blink());
+            }
+            if (canTakeDamage == true)
+            {
+                totalHP = totalHP - 20f;
+            }
+            Debug.Log("Total HP = " + totalHP);
         }
 
         if (other.gameObject.tag == "HeavyBulletPack")

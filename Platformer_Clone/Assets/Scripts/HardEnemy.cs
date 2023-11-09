@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Megan Mix
+/// 11/09/23
+/// Hard Enemy mechanics; follows player around level; dies if HP reaches 0
+/// </summary>
 public class HardEnemy : MonoBehaviour
 {
     public float speed;

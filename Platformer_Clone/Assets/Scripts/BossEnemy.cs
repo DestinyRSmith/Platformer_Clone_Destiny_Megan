@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Megan Mix
+/// 11/09/23
+/// Boss Enemy mechanics
+/// </summary>
 public class BossEnemy : MonoBehaviour
 {
     public float speed;
