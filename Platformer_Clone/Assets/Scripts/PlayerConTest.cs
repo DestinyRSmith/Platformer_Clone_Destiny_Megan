@@ -7,7 +7,6 @@ public class PlayerConTest : MonoBehaviour
     private Vector3 startPosition;
     //private float deathY = -20f;
     public float speed = 10f;
-    public float lives = 3;
     private Rigidbody rigidBodyRef;
     public float jumpForce = 5f;
     public float jumpCount = 0f;

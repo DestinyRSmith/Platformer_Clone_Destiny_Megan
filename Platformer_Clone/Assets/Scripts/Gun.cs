@@ -11,21 +11,33 @@ public class Gun : MonoBehaviour
     public bool shootRight;
     public Vector3 gunPos;
     public bool canShoot = true;
+    public Quaternion gunRot;
 
     private void Update()
     {
         transform.position = player.GetComponent<PlayerConTest>().transform.position;
         gunPos = transform.position;
-        
+        transform.rotation = gunRot;
+
         if (player.GetComponent<PlayerConTest>().facingRight == true)
         {
             gunPos.x += 1;
             transform.position = gunPos;
+            if (gunRot.y != -90)
+            {
+                transform.Rotate(Vector3.up * -90);
+            }
         }
+
         if (player.GetComponent<PlayerConTest>().facingLeft == true)
         {
             gunPos.x -= 1;
             transform.position = gunPos;
+            if (gunRot.y != 90)
+            {
+                transform.Rotate(Vector3.up * 90);
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Return))

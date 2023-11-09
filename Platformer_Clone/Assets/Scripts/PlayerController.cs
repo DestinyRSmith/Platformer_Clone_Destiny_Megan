@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
    // variables for movement
     private Vector3 startPosition;
     public float jumpForce = 15f;
+    public float jumpCount = 0f;
+    public bool jumpPack = false;
     private Rigidbody rigidBodyRef;
     public float speed = 10f;
     public bool facingRight;
@@ -24,6 +27,8 @@ public class PlayerController : MonoBehaviour
     // variables for bullets
     public bool regularBullets = true;
     public bool heavyBullets = false;
+    public GameObject bullet;
+    public GameObject heavyBullet;
 
     //public BlinkMechanic blinkMechanics;
 
@@ -58,6 +63,14 @@ public class PlayerController : MonoBehaviour
             transform.position += transform.forward * 5 * Time.deltaTime;
             HandleJump();
         }
+
+        //For switching to heavy bullets
+        if (heavyBullets == true)
+        {
+            bullet.gameObject.SetActive(false);
+            heavyBullet.gameObject.SetActive(true);
+        }
+
         GameOver();
         
     }
@@ -136,25 +149,34 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Gives ability for to the player to raise Y coordinate to 'jump', if jump pack collected, can double jump
+    /// </summary>
     private void HandleJump()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 5f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.3f))
         {
             rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpCount = 1;
         }
         else
         {
-            Debug.Log("Player is not touching the ground so they can't jump");
+            if (jumpCount == 1f && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && jumpPack == true)
+            {
+                rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumpCount++;
+            }
+            jumpCount = 0f;
         }
     }
-    
+
     public void GameOver()
     {
         if (totalHP == 0)
         {
-            //switch scene
+            SceneManager.LoadScene(5);
         }
     }
 }
