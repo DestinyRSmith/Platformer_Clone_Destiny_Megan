@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour
 {
    // variables for movement
     private Vector3 startPosition;
-    public float jumpForce = 15f;
+    public float jumpForce = 5f;
     public float jumpCount = 0f;
     public bool jumpPack = false;
     private Rigidbody rigidBodyRef;
     public float speed = 10f;
     public bool facingRight;
     public bool facingLeft;
+    public float deathY = -10f;
 
     // variables for health
     public float totalHP = 99f;
@@ -33,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public bool heavyBullets = false;
     public GameObject bullet;
     public GameObject heavyBullet;
+
+    // for switching scenes
+    public float enemyCount = 0f;
 
     //public BlinkMechanic blinkMechanics;
 
@@ -61,10 +65,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            transform.Rotate(Vector3.up * 90);
-            transform.position += transform.forward * 5 * Time.deltaTime;
+           // transform.Rotate(Vector3.up * 90);
+           // transform.position += transform.forward * 5 * Time.deltaTime;
             HandleJump();
         }
 
@@ -73,6 +77,29 @@ public class PlayerController : MonoBehaviour
         {
             bullet.gameObject.SetActive(false);
             heavyBullet.gameObject.SetActive(true);
+        }
+
+        if (transform.position.y <= deathY)
+        {
+            totalHP -= 15f;
+            transform.position = startPosition;
+        }
+
+        if (enemyCount == 4f)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (enemyCount == 8f)
+        {
+            SceneManager.LoadScene(3);
+        }
+        else if (enemyCount == 12f)
+        {
+            SceneManager.LoadScene(4);
+        }
+        else if (enemyCount == 18f)
+        {
+            SceneManager.LoadScene(6);
         }
 
         GameOver();
@@ -171,6 +198,12 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        if (other.gameObject.tag == "JumpPack")
+        {
+            jumpPack = true;
+            other.gameObject.SetActive(false);
+        }
+
     }
     /// <summary>
     /// Gives ability for to the player to raise Y coordinate to 'jump', if jump pack collected, can double jump
@@ -186,7 +219,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (jumpCount == 1f && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && jumpPack == true)
+            if (jumpCount == 1f && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && jumpPack == true)
             {
                 rigidBodyRef.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 jumpCount++;
@@ -197,7 +230,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
-        if (totalHP == 0)
+        if (totalHP <= 0)
         {
             SceneManager.LoadScene(5);
         }

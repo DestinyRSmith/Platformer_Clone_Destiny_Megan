@@ -15,13 +15,13 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        transform.position = player.GetComponent<PlayerConTest>().transform.position;
+        transform.position = player.GetComponent<PlayerController>().transform.position;
         gunPos = transform.position;
         transform.rotation = gunRot;
 
-        if (player.GetComponent<PlayerConTest>().facingRight == true)
+        if (player.GetComponent<PlayerController>().facingRight == true)
         {
-            gunPos.x += 1;
+            gunPos.x += 1f;
             transform.position = gunPos;
             if (gunRot.y != -90)
             {
@@ -29,9 +29,9 @@ public class Gun : MonoBehaviour
             }
         }
 
-        if (player.GetComponent<PlayerConTest>().facingLeft == true)
+        if (player.GetComponent<PlayerController>().facingLeft == true)
         {
-            gunPos.x -= 1;
+            gunPos.x -= 1f;
             transform.position = gunPos;
             if (gunRot.y != 90)
             {
@@ -44,11 +44,11 @@ public class Gun : MonoBehaviour
         {
             if (canShoot == true)
             {
-                if (player.GetComponent<PlayerConTest>().heavyBullets == false)
+                if (player.GetComponent<PlayerController>().heavyBullets == false)
                 {
                     ShootBullet();
                 }
-                if (player.GetComponent<PlayerConTest>().heavyBullets == true)
+                if (player.GetComponent<PlayerController>().heavyBullets == true)
                 {
                     ShootHeavyBullet();
                 }
@@ -71,18 +71,18 @@ public class Gun : MonoBehaviour
     private void ShootBullet()
     {
         GameObject bulletDirection = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerConTest>().facingRight;
-        bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerConTest>().facingLeft;
-        bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerConTest>().transform.position;
-        bulletDirection.GetComponent<RegularBullet>().originPosLeft = player.GetComponent<PlayerConTest>().transform.position;
+        bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerController>().facingRight;
+        bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerController>().facingLeft;
+        bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerController>().transform.position;
+        bulletDirection.GetComponent<RegularBullet>().originPosLeft = player.GetComponent<PlayerController>().transform.position;
     }
 
     private void ShootHeavyBullet()
     {
         GameObject bulletDirection = Instantiate(heavyBulletPrefab, transform.position, transform.rotation);
-        bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerConTest>().facingRight;
-        bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerConTest>().facingLeft;
-        bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerConTest>().transform.position;
-        bulletDirection.GetComponent<RegularBullet>().originPosLeft = player.GetComponent<PlayerConTest>().transform.position;
+        bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerController>().facingRight;
+        bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerController>().facingLeft;
+        bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerController>().transform.position;
+        bulletDirection.GetComponent<RegularBullet>().originPosLeft = player.GetComponent<PlayerController>().transform.position;
     }
 }

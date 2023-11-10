@@ -13,6 +13,7 @@ TagManager:
   - HealthPack
   - ExtraHealth
   - BossEnemy
+  - HeavyBullet
   layers:
   - Default
   - TransparentFX

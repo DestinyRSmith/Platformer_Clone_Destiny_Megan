@@ -740,8 +740,8 @@ GameObject:
   - component: {fileID: 1465467816}
   - component: {fileID: 1465467815}
   - component: {fileID: 1465467814}
-  - component: {fileID: 1465467818}
   - component: {fileID: 1465467819}
+  - component: {fileID: 1465467820}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Untagged
@@ -792,7 +792,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7cdbbe48d88f2cd49894923e69d16729, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -838,33 +838,6 @@ Transform:
   - {fileID: 721579139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465467818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465467811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe29f5dbadeb64641b11290fbe7820bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  lives: 3
-  jumpForce: 5
-  jumpCount: 0
-  regularBullets: 1
-  heavyBullets: 0
-  facingRight: 0
-  facingLeft: 0
-  jumpPack: 0
-  bullet: {fileID: 2979475064452088270, guid: 3886572da6d520d4e83dd385ed425ee0, type: 3}
-  heavyBullet: {fileID: 2979475064452088270, guid: 1c79f1bb68e636f458bae45139279ac2, type: 3}
-  totalHP: 99
-  healthPack: 15
-  extraHealth: 100
-  hasExtraHealth: 0
 --- !u!54 &1465467819
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -892,6 +865,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1465467820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465467811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6de1fc0b36ad8846b797118448b688f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 5
+  jumpCount: 0
+  jumpPack: 0
+  speed: 10
+  facingRight: 0
+  facingLeft: 0
+  totalHP: 99
+  canTakeDamage: 1
+  firstHit: 1
+  healthPack: 15
+  extraHealth: 100
+  hasExtraHealth: 0
+  regularBullets: 1
+  heavyBullets: 0
+  bullet: {fileID: 2979475064452088270, guid: 3886572da6d520d4e83dd385ed425ee0, type: 3}
+  heavyBullet: {fileID: 2979475064452088270, guid: 1c79f1bb68e636f458bae45139279ac2, type: 3}
 --- !u!1 &1503586665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f35a95f61ab876f40b74332a1d840559, type: 3}

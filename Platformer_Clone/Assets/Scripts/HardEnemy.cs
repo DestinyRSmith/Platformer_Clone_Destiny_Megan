@@ -35,6 +35,7 @@ public class HardEnemy : MonoBehaviour
         if (hardEnemyHP == 0)
         {
             Destroy(this.gameObject);
+            GetComponent<PlayerController>().enemyCount++;
         }
     }
     private void OnTriggerEnter(Collider other)
