@@ -58,7 +58,7 @@ public class NewBehaviourScript : MonoBehaviour
             GetComponent<PlayerController>().enemyCount++;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")
         {
@@ -68,5 +68,5 @@ public class NewBehaviourScript : MonoBehaviour
         {
             totalEnemyHP = totalEnemyHP - 3f;
         }
-    }
+    }*/
 }

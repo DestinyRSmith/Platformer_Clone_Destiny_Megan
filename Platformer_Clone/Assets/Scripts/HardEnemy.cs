@@ -37,14 +37,16 @@ public class HardEnemy : MonoBehaviour
             Destroy(this.gameObject);
             GetComponent<PlayerController>().enemyCount++;
         }
+        //OnCollisionEnter();
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet")
         {
             hardEnemyHP = hardEnemyHP - 1f;
+            Debug.Log("Hard Enemy was hit");
         }
-        if (other.gameObject.tag == "HeavyBulletPack")
+        if (collision.gameObject.tag == "HeavyBulletPack")
         {
             hardEnemyHP = hardEnemyHP - 3f;
         }

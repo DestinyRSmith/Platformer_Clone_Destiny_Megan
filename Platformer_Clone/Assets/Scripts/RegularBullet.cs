@@ -32,12 +32,14 @@ public class RegularBullet : MonoBehaviour
         if (faceRight == true)
         {
             ShootingRight();
-            
+            BulletHit();
+
         }
         
         if (faceLeft == true)
         {
             ShootingLeft();
+            BulletHit();
         }
         
     }
@@ -60,5 +62,22 @@ public class RegularBullet : MonoBehaviour
     private void ShootingLeft()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
+    }
+    private void BulletHit()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+        {
+            if (hit.collider.tag == "BigEnemy")
+            {
+                Debug.Log("hit");
+                
+            }
+            if (hit.collider.tag == "Enemy")
+            {
+                Debug.Log("Hit Enemy");
+                Destroy(hit.collider.gameObject);
+            }
+        }
     }
 }
