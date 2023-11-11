@@ -39,16 +39,16 @@ public class HardEnemy : MonoBehaviour
         }
         //OnCollisionEnter();
     }
-    public void OnCollisionEnter(Collision collision)
+    /*public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
             hardEnemyHP = hardEnemyHP - 1f;
-            Debug.Log("Hard Enemy was hit");
+            Debug.Log("HP = " + hardEnemyHP);
         }
         if (collision.gameObject.tag == "HeavyBulletPack")
         {
             hardEnemyHP = hardEnemyHP - 3f;
         }
-    }
+    }*/
 }

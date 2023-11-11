@@ -66,17 +66,23 @@ public class RegularBullet : MonoBehaviour
     private void BulletHit()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, 1))
         {
             if (hit.collider.tag == "BigEnemy")
             {
                 Debug.Log("hit");
-                
+                hardEnemyHP = hardEnemyHP - 1f;
+                Debug.Log("HP = " + hardEnemyHP);
+                Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "Enemy")
             {
                 Debug.Log("Hit Enemy");
                 Destroy(hit.collider.gameObject);
+            }
+            if (hit.collider.tag == "BossEnemy")
+            {
+                Debug.Log("Hit Boss");
             }
         }
     }
