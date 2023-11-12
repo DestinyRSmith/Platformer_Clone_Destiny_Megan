@@ -33,16 +33,5 @@ public class HardEnemy : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-      /*if (BulletTouch == true)
-        {
-            //if the enemy is hit lose HP
-            hardEnemyHP = hardEnemyHP - 1f;
-            Debug.Log("HP = " + hardEnemyHP);
-            if (hardEnemyHP == 0)
-            {
-                Destroy(this.gameObject);
-                GetComponent<PlayerController>().enemyCount++;
-            }
-        }*/
     }
 }

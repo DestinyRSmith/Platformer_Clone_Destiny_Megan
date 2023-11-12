@@ -126,5 +126,4 @@ MonoBehaviour:
   originPosRight: {x: 0, y: 0, z: 0}
   originPosLeft: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 2979475064452088270}
-  enemyprefab: {fileID: 4591657470151254119, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
-  BigHealth: 0
+  hardEnemyPrefab: {fileID: 4591657470151254119, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
