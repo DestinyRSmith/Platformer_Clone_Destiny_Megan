@@ -11,17 +11,17 @@ public class RegularBullet : MonoBehaviour
     public float speed = 15f;
     public bool faceRight;
     public bool faceLeft;
-
+    
     public Vector3 originPosRight;
     public Vector3 originPosLeft;
     public GameObject bulletPrefab;
-
-
+    float bigEnemyHP = HardEnemy.hardEnemyHP;
     // Start is called before the first frame update
     void Start()
     {
-            StartCoroutine(DespawnDelay());
         // Starts the coroutine when the object is instantiated in the scene
+        StartCoroutine(DespawnDelay());
+        
     }
 
     // Update is called once per frame
@@ -41,7 +41,6 @@ public class RegularBullet : MonoBehaviour
             ShootingLeft();
             BulletHit();
         }
-        
     }
     /// <summary>
     /// Yields before destroying the game object tagged "Bullet"
@@ -63,7 +62,7 @@ public class RegularBullet : MonoBehaviour
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
     }
-    private void BulletHit()
+    public void BulletHit()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.left, out hit, 1))
@@ -71,19 +70,31 @@ public class RegularBullet : MonoBehaviour
             if (hit.collider.tag == "BigEnemy")
             {
                 Debug.Log("hit");
-                hardEnemyHP = hardEnemyHP - 1f;
-                Debug.Log("HP = " + hardEnemyHP);
+                DamageDealt();
                 Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "Enemy")
             {
                 Debug.Log("Hit Enemy");
                 Destroy(hit.collider.gameObject);
+                Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "BossEnemy")
             {
                 Debug.Log("Hit Boss");
+                BossDamage();
+                Destroy(bulletPrefab.gameObject);
             }
         }
+    }
+    public void DamageDealt()
+    {
+        bigEnemyHP = bigEnemyHP - 1f;
+        Debug.Log("HP = " + bigEnemyHP);
+        bigEnemyHP--;
+    }
+    public void BossDamage()
+    {
+        //code for boss damage dealt
     }
 }

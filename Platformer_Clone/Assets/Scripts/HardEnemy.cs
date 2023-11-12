@@ -9,10 +9,11 @@ using UnityEngine;
 public class HardEnemy : MonoBehaviour
 {
     public float speed;
-    public float hardEnemyHP = 10f;
+    public static float hardEnemyHP = 10f;
     public GameObject player;
     private float startingX;
     private bool movingRight;
+    //bool BulletTouch = other.gameObject.GetComponent<RegularBullet>().BulletHit();
 
     // Start is called before the first frame update
     void Start()
@@ -32,23 +33,16 @@ public class HardEnemy : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-        if (hardEnemyHP == 0)
+      /*if (BulletTouch == true)
         {
-            Destroy(this.gameObject);
-            GetComponent<PlayerController>().enemyCount++;
-        }
-        //OnCollisionEnter();
-    }
-    /*public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
+            //if the enemy is hit lose HP
             hardEnemyHP = hardEnemyHP - 1f;
             Debug.Log("HP = " + hardEnemyHP);
-        }
-        if (collision.gameObject.tag == "HeavyBulletPack")
-        {
-            hardEnemyHP = hardEnemyHP - 3f;
-        }
-    }*/
+            if (hardEnemyHP == 0)
+            {
+                Destroy(this.gameObject);
+                GetComponent<PlayerController>().enemyCount++;
+            }
+        }*/
+    }
 }
