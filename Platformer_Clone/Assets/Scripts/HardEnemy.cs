@@ -13,6 +13,7 @@ public class HardEnemy : MonoBehaviour
     public GameObject player;
     private float startingX;
     private bool movingRight;
+    public GameObject hardEnemyPrefab;
     //bool BulletTouch = other.gameObject.GetComponent<RegularBullet>().BulletHit();
 
     // Start is called before the first frame update
@@ -32,6 +33,16 @@ public class HardEnemy : MonoBehaviour
         else
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+    }
+    public static void DamageDealt()
+    {
+        hardEnemyHP = hardEnemyHP - 1f;
+
+        Debug.Log("HP = " + hardEnemyHP);
+        if (hardEnemyHP == 0)
+        {
+            Destroy(hardEnemyPrefab.gameObject);
         }
     }
 }
