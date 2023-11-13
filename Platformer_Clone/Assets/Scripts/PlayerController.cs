@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public GameObject heavyBullet;
 
     // for switching scenes
-    public float enemyCount = 0f;
+    public float enemyCount;
 
     //public BlinkMechanic blinkMechanics;
 
@@ -85,19 +85,19 @@ public class PlayerController : MonoBehaviour
             transform.position = startPosition;
         }
 
-        if (enemyCount == 4f)
+        if (enemyCount >= 4f)
         {
             SceneManager.LoadScene(2);
         }
-        else if (enemyCount == 8f && heavyBullets == true)
+        else if (enemyCount >= 8f && heavyBullets == true)
         {
             SceneManager.LoadScene(3);
         }
-        else if (enemyCount == 12f && jumpPack == true)
+        else if (enemyCount >= 12f && jumpPack == true)
         {
             SceneManager.LoadScene(4);
         }
-        else if (enemyCount == 18f)
+        else if (enemyCount >= 18f)
         {
             SceneManager.LoadScene(6);
         }

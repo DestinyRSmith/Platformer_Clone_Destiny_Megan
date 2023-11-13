@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2979475064452088270, guid: 3886572da6d520d4e83dd385ed425ee0, type: 3}
   heavyBulletPrefab: {fileID: 2979475064452088270, guid: 1c79f1bb68e636f458bae45139279ac2, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 4177130430741159609, guid: dabb3ed4badbc17418dc6b73d4b7b6a8, type: 3}
   shootRight: 0
   gunPos: {x: 0, y: 0, z: 0}
   canShoot: 1

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 /// <summary>
 /// Megan Mix
@@ -17,7 +18,8 @@ public class NewBehaviourScript : MonoBehaviour
     private bool movingRight = true;
     public float totalEnemyHP = 1f;
 
-    public GameObject player;
+    public int deathCount = 0;
+    public bool stillAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -55,12 +57,13 @@ public class NewBehaviourScript : MonoBehaviour
             }
         }
         
+        /*
         if (totalEnemyHP <= 0)
         {
-            //Destroy(this.gameObject);
-            player.GetComponent<PlayerController>().enemyCount += 1f;
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
         }
+        */
     }
     private void OnTriggerEnter(Collider other)
     {

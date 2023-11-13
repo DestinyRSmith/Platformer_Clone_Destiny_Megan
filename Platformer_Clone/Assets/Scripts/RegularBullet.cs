@@ -17,6 +17,8 @@ public class RegularBullet : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject hardEnemyPrefab;
 
+    public float deathCount = 0f;
+
     //float bigEnemyHP = HardEnemy.hardEnemyHP;
 
     // Start is called before the first frame update
@@ -24,7 +26,6 @@ public class RegularBullet : MonoBehaviour
     {
         // Starts the coroutine when the object is instantiated in the scene
         StartCoroutine(DespawnDelay());
-        
     }
 
     // Update is called once per frame
@@ -83,9 +84,10 @@ public class RegularBullet : MonoBehaviour
             }
             if (hit.collider.tag == "Enemy")
             {
-                Debug.Log("Hit Enemy");
-                //Destroy(hit.collider.gameObject);
-                hit.collider.gameObject.SetActive(false);
+                deathCount++;
+                Debug.Log("death count: " + deathCount);
+                Destroy(hit.collider.gameObject);
+                //hit.collider.gameObject.SetActive(false);
                 Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "BossEnemy")
@@ -96,6 +98,7 @@ public class RegularBullet : MonoBehaviour
             }
         }
     }
+
     /*public void DamageDealt()
     {
         bigEnemyHP = bigEnemyHP - 1f;

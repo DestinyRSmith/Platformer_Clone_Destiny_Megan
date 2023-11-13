@@ -1285,6 +1285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hard Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4591657470151254119, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6283425258428300864, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1605,7 +1609,8 @@ PrefabInstance:
       propertyPath: enemyCounter
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2531645802206888348, guid: dabb3ed4badbc17418dc6b73d4b7b6a8, type: 3}
