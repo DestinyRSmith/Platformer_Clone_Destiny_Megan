@@ -89,11 +89,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
-        else if (enemyCount == 8f)
+        else if (enemyCount == 8f && heavyBullets == true)
         {
             SceneManager.LoadScene(3);
         }
-        else if (enemyCount == 12f)
+        else if (enemyCount == 12f && jumpPack == true)
         {
             SceneManager.LoadScene(4);
         }

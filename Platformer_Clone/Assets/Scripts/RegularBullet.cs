@@ -16,6 +16,7 @@ public class RegularBullet : MonoBehaviour
     public Vector3 originPosLeft;
     public GameObject bulletPrefab;
     public GameObject hardEnemyPrefab;
+
     //float bigEnemyHP = HardEnemy.hardEnemyHP;
 
     // Start is called before the first frame update
@@ -74,7 +75,7 @@ public class RegularBullet : MonoBehaviour
             {
                 Debug.Log("hit");
                 HardEnemy.DamageDealt();
-                if (HardEnemy.hardEnemyHP == 0)
+                if (HardEnemy.hardEnemyHP <= 0)
                 {
                     Destroy(hit.collider.gameObject);
                 }
@@ -83,7 +84,8 @@ public class RegularBullet : MonoBehaviour
             if (hit.collider.tag == "Enemy")
             {
                 Debug.Log("Hit Enemy");
-                Destroy(hit.collider.gameObject);
+                //Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.SetActive(false);
                 Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "BossEnemy")

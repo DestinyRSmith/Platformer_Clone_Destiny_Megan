@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Megan Mix
@@ -15,6 +16,8 @@ public class NewBehaviourScript : MonoBehaviour
     private float startingX;
     private bool movingRight = true;
     public float totalEnemyHP = 1f;
+
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -52,10 +55,11 @@ public class NewBehaviourScript : MonoBehaviour
             }
         }
         
-        if (totalEnemyHP == 0)
+        if (totalEnemyHP <= 0)
         {
-            Destroy(this.gameObject);
-            GetComponent<PlayerController>().enemyCount++;
+            //Destroy(this.gameObject);
+            player.GetComponent<PlayerController>().enemyCount += 1f;
+            this.gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter(Collider other)
