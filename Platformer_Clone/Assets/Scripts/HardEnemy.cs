@@ -8,12 +8,13 @@ using UnityEngine;
 /// </summary>
 public class HardEnemy : MonoBehaviour
 {
+    //public static GameObject hardEnemyPrefab;
     public float speed;
     public static float hardEnemyHP = 10f;
     public GameObject player;
     private float startingX;
     private bool movingRight;
-    public GameObject hardEnemyPrefab;
+    
     //bool BulletTouch = other.gameObject.GetComponent<RegularBullet>().BulletHit();
 
     // Start is called before the first frame update
@@ -40,9 +41,9 @@ public class HardEnemy : MonoBehaviour
         hardEnemyHP = hardEnemyHP - 1f;
 
         Debug.Log("HP = " + hardEnemyHP);
-        if (hardEnemyHP == 0)
+        /*if (hardEnemyHP == 0)
         {
             Destroy(hardEnemyPrefab.gameObject);
-        }
+        }*/
     }
 }

@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4424145168493146962, guid: 82238dd1292159845a743d567dab1b45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4299998
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 4424145168493146962, guid: 82238dd1292159845a743d567dab1b45, type: 3}
       propertyPath: m_LocalPosition.z
@@ -294,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497756734925356909, guid: 570b44b00cb3d58489bd719ac43932cf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.6726
       objectReference: {fileID: 0}
     - target: {fileID: 8497756734925356909, guid: 570b44b00cb3d58489bd719ac43932cf, type: 3}
       propertyPath: m_LocalScale.z
@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497756734925356909, guid: 570b44b00cb3d58489bd719ac43932cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 8497756734925356909, guid: 570b44b00cb3d58489bd719ac43932cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1221,6 +1221,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8623222539523121170, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
+      propertyPath: hardEnemyPrefab
+      value: 
+      objectReference: {fileID: 2019079613}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1612,6 +1616,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &2019079613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4591657470151254119, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
+  m_PrefabInstance: {fileID: 1512015376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2020014494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4177130430741159609, guid: dabb3ed4badbc17418dc6b73d4b7b6a8, type: 3}
