@@ -14,7 +14,9 @@ public class HardEnemy : MonoBehaviour
     public GameObject player;
     private float startingX;
     private bool movingRight;
-    
+    public float travelDistanceRight = 0;
+    public float travelDistanceLeft = 0;
+
     //bool BulletTouch = other.gameObject.GetComponent<RegularBullet>().BulletHit();
 
     // Start is called before the first frame update
@@ -27,13 +29,17 @@ public class HardEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (player.transform.position.x > transform.position.x)
-       {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-       }
-        else
+       
+        if (transform.position.x <= startingX + travelDistanceRight)
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            if (player.transform.position.x > transform.position.x)
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
         }
     }
     public static void DamageDealt()

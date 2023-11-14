@@ -120,3 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   player: {fileID: 4177130430741159609, guid: dabb3ed4badbc17418dc6b73d4b7b6a8, type: 3}
+  travelDistanceRight: 7
+  travelDistanceLeft: 7
