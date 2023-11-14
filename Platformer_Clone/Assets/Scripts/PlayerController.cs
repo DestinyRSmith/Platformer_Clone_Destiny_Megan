@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemyCount = RegularBullet.deathCount + HeavyBullets.deathCount;
+        enemyCount = RegularBullet.deathCount;
         //side to side movement
         if (Input.GetKey(KeyCode.A))
         {
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
             startPosition = transform.position;
             // Loads victory scene when player kills all enemies in the final level
             enemyCount = 0;
-            if (enemyCount >= 10f)
+            if (enemyCount >= 8f)
             {
                 SceneManager.LoadScene(6);
             }

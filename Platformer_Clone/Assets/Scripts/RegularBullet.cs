@@ -17,6 +17,8 @@ public class RegularBullet : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject hardEnemyPrefab;
 
+    public PlayerController player;
+
     public static int deathCount;
 
     // Start is called before the first frame update
@@ -52,7 +54,7 @@ public class RegularBullet : MonoBehaviour
     
     IEnumerator DespawnDelay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
     }
    
@@ -81,7 +83,14 @@ public class RegularBullet : MonoBehaviour
         {
             if (hit.collider.tag == "BigEnemy")
             {
-                HardEnemy.DamageDealt();
+                if (player.heavyBullets == true)
+                {
+                    HardEnemy.DealingDamage();
+                }
+                else
+                {
+                    HardEnemy.DamageDealt();
+                }
                 if (HardEnemy.hardEnemyHP <= 0)
                 {
                     deathCount++;
@@ -102,6 +111,7 @@ public class RegularBullet : MonoBehaviour
                 BossEnemy.BossDamage();
                 if (BossEnemy.totalEnemyHP == 0)
                 {
+                    deathCount++;
                     Destroy(hit.collider.gameObject);
                 }
                 Destroy(bulletPrefab.gameObject);

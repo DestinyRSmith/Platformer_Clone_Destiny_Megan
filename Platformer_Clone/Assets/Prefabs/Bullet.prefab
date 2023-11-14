@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4508317724614811494
 Transform:
   m_ObjectHideFlags: 0
@@ -127,3 +127,4 @@ MonoBehaviour:
   originPosLeft: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 2979475064452088270}
   hardEnemyPrefab: {fileID: 4591657470151254119, guid: 35d521a000166b04fb4940c2bcad3f80, type: 3}
+  player: {fileID: 0}

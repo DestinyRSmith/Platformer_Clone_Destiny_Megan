@@ -17,6 +17,18 @@ public class HardEnemy : MonoBehaviour
     public float travelDistanceRight = 7;
     public float travelDistanceLeft = 7;
 
+    /*
+    public float lvl1MaxX = 34f;
+    public float lvl1MinX = -7f;
+    public float lvl2MaxX = 84f;
+    public float lvl2MinX = 44f;
+    public float lvl3MinX = 96f;
+    public float lvl3MaxX = 136f;
+    public float lvl4MinX = 149f;
+    public float lvl4MaxX = 213f;
+    */
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +52,7 @@ public class HardEnemy : MonoBehaviour
                     transform.position += Vector3.left * speed * Time.deltaTime;
                 }
             }
-        }      
+        }
     }
 
     /// <summary>

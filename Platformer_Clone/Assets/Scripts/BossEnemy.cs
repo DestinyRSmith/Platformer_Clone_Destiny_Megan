@@ -50,7 +50,7 @@ public class BossEnemy : MonoBehaviour
     // deals damage to Boss's HP
     public static void BossDamage()
     {
-        totalEnemyHP = totalEnemyHP - 1f;
+        totalEnemyHP = totalEnemyHP - 3f;
         Debug.Log("HP = " + totalEnemyHP);
     }
 

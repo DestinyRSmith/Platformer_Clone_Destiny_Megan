@@ -14,8 +14,11 @@ public class GameOver : MonoBehaviour
     public void RetryGame()
     {
         SceneManager.LoadScene(1);
-        player.heavyBullets = false;
-        player.jumpPack = false;
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()
