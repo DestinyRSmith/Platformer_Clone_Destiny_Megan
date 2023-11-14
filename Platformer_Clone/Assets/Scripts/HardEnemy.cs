@@ -51,4 +51,9 @@ public class HardEnemy : MonoBehaviour
         hardEnemyHP = hardEnemyHP - 1f;
         Debug.Log("HP = " + hardEnemyHP);
     }
+    public static void DealingDamage()
+    {
+        hardEnemyHP = hardEnemyHP - 3f;
+        Debug.Log("HP = " + hardEnemyHP);
+    }
 }

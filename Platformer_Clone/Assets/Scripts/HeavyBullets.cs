@@ -81,7 +81,7 @@ public class HeavyBullets : MonoBehaviour
         {
             if (hit.collider.tag == "BigEnemy")
             {
-                HardEnemy.DamageDealt();
+                HardEnemy.DealingDamage();
                 if (HardEnemy.hardEnemyHP <= 0)
                 {
                     deathCount++;
