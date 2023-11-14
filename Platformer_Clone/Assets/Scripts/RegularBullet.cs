@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Smith, Destiny
-// 10/26/2023
+// 11/13/2023
 // Controls the bullet movements
 
 public class RegularBullet : MonoBehaviour
@@ -17,7 +17,7 @@ public class RegularBullet : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject hardEnemyPrefab;
 
-    public static int deathCount = 0;
+    public static int deathCount;
 
     // Start is called before the first frame update
     void Start()
@@ -56,15 +56,24 @@ public class RegularBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
    
+    /// <summary>
+    /// Cotrols movement for bullets going to the right
+    /// </summary>
     private void ShootingRight()
     {
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
-
+    /// <summary>
+    /// Controls movement for bullets going to the left
+    /// </summary>
     private void ShootingLeft()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
     }
+
+    /// <summary>
+    /// Destroys enemies that are hit by a bullet and adds to enemy count
+    /// </summary>
     public void BulletHit()
     {
         RaycastHit hit;

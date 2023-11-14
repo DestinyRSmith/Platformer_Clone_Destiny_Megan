@@ -10,10 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-
+    public PlayerController player;
     public void RetryGame()
     {
         SceneManager.LoadScene(1);
+        player.heavyBullets = false;
+        player.jumpPack = false;
+        player.enemyCount = 0;
     }
 
     public void Quit()

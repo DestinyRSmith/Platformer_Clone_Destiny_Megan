@@ -18,9 +18,6 @@ public class NewBehaviourScript : MonoBehaviour
     private bool movingRight = true;
     public float totalEnemyHP = 1f;
 
-    //public int deathCount = 0;
-    //public bool stillAlive = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -56,15 +53,8 @@ public class NewBehaviourScript : MonoBehaviour
                 movingRight = true;
             }
         }
-        
-        /*
-        if (totalEnemyHP <= 0)
-        {
-            Destroy(this.gameObject);
-            //this.gameObject.SetActive(false);
-        }
-        */
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")

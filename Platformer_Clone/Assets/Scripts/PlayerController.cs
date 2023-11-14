@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-/// <summary>
-/// Megan Mix & Destiny Smith
-/// 11/09/23
-/// Main Player Controller Script
-/// </summary>
+
+// Megan Mix & Destiny Smith
+// 11/13/23
+// Main Player Controller Script
+
 public class PlayerController : MonoBehaviour
 {
    // variables for movement
@@ -36,9 +36,7 @@ public class PlayerController : MonoBehaviour
     public GameObject heavyBullet;
 
     // for switching scenes
-    public float enemyCount;
-
-    //public BlinkMechanic blinkMechanics;
+    public float enemyCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -80,21 +78,29 @@ public class PlayerController : MonoBehaviour
             heavyBullet.gameObject.SetActive(true);
         }
 
+        // Rspawns the player and take 15 HP if they fall off the map
         if (transform.position.y <= deathY)
         {
             totalHP -= 15f;
             transform.position = startPosition;
         }
 
+        /*
+        // Loads victory scene when player kills all enemies in the final level
         if (enemyCount >= 10f)
         {
             SceneManager.LoadScene(6);
         }
+        */
 
         GameOver();
         
     }
 
+    /// <summary>
+    /// Makes the player blink when HP goes down
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Blink()
     {
         firstHit = false;
@@ -113,6 +119,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = true;
         firstHit = true;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         //if player gets hit they lose 15HP and blink for 5 seconds
@@ -144,6 +151,7 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("Total HP = " + totalHP);
         }
+        // Handles damage for Boss Enemy
         if (other.gameObject.tag == "BossEnemy")
         {
             if (firstHit == true)
@@ -187,7 +195,7 @@ public class PlayerController : MonoBehaviour
             totalHP = totalHP + 100f;
             other.gameObject.SetActive(false);
         }
-
+        // allows the player to jump twice
         if (other.gameObject.tag == "JumpPack")
         {
             jumpPack = true;
@@ -213,9 +221,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Portal3" && jumpPack == true)
         {
-            enemyCount = 0;
             transform.position = other.gameObject.GetComponent<Portal>().spawnPoint3.transform.position;
             startPosition = transform.position;
+            // Loads victory scene when player kills all enemies in the final level
+            if (enemyCount >= 10f)
+            {
+                SceneManager.LoadScene(6);
+            }
         }
         else
         {
@@ -246,6 +258,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When HP is zero or below, game over scene loads
+    /// </summary>
     public void GameOver()
     {
         if (totalHP <= 0)

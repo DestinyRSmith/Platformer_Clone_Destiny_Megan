@@ -42,6 +42,10 @@ public class HardEnemy : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Handles damage dealt to enemy
+    /// </summary>
     public static void DamageDealt()
     {
         hardEnemyHP = hardEnemyHP - 1f;
