@@ -16,7 +16,6 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(1);
         player.heavyBullets = false;
         player.jumpPack = false;
-        player.enemyCount = 0;
     }
 
     public void Quit()
