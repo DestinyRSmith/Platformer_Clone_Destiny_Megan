@@ -13,7 +13,7 @@ public class BossEnemy : MonoBehaviour
     public float travelDistanceRight = 0;
     public float travelDistanceLeft = 0;
     private bool movingRight = true;
-    public float totalEnemyHP = 100f;
+    public static float totalEnemyHP = 100f;
     public bool JumpMode = true;
 
     public GameObject topPosObject;
@@ -46,21 +46,11 @@ public class BossEnemy : MonoBehaviour
             Jumping();
         }
         Movement();
-        if (totalEnemyHP == 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
-    private void OnTriggerEnter(Collider other)
+    public static void BossDamage()
     {
-        if (other.gameObject.tag == "Bullet")
-        {
-            totalEnemyHP = totalEnemyHP - 1f;
-        }
-        if (other.gameObject.tag == "HeavyBulletPack")
-        {
-            totalEnemyHP = totalEnemyHP - 3f;
-        }
+        totalEnemyHP = totalEnemyHP - 1f;
+        Debug.Log("HP = " + totalEnemyHP);
     }
     public void Jumping()
     {

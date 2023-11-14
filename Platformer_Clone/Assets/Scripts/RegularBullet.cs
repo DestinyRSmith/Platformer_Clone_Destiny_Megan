@@ -17,9 +17,7 @@ public class RegularBullet : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject hardEnemyPrefab;
 
-    public float deathCount = 0f;
-
-    //float bigEnemyHP = HardEnemy.hardEnemyHP;
+    public static int deathCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +43,7 @@ public class RegularBullet : MonoBehaviour
             ShootingLeft();
             BulletHit();
         }
-
+        Debug.Log("death count: " + deathCount);
     }
     /// <summary>
     /// Yields before destroying the game object tagged "Bullet"
@@ -74,43 +72,31 @@ public class RegularBullet : MonoBehaviour
         {
             if (hit.collider.tag == "BigEnemy")
             {
-                Debug.Log("hit");
                 HardEnemy.DamageDealt();
                 if (HardEnemy.hardEnemyHP <= 0)
                 {
+                    deathCount++;
                     Destroy(hit.collider.gameObject);
                 }
                 Destroy(bulletPrefab.gameObject);
+                
             }
             if (hit.collider.tag == "Enemy")
             {
                 deathCount++;
-                Debug.Log("death count: " + deathCount);
                 Destroy(hit.collider.gameObject);
-                //hit.collider.gameObject.SetActive(false);
                 Destroy(bulletPrefab.gameObject);
             }
             if (hit.collider.tag == "BossEnemy")
             {
                 Debug.Log("Hit Boss");
-                BossDamage();
+                BossEnemy.BossDamage();
+                if (BossEnemy.totalEnemyHP == 0)
+                {
+                    Destroy(hit.collider.gameObject);
+                }
                 Destroy(bulletPrefab.gameObject);
             }
         }
-    }
-
-    /*public void DamageDealt()
-    {
-        bigEnemyHP = bigEnemyHP - 1f;
-        Debug.Log("HP = " + bigEnemyHP);
-        bigEnemyHP--;
-        if (bigEnemyHP == 0)
-        {
-            Destroy(hardEnemyPrefab.gameObject);
-        }
-    }*/
-    public void BossDamage()
-    {
-        //code for boss damage dealt
     }
 }

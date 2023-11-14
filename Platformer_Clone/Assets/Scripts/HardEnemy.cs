@@ -39,11 +39,6 @@ public class HardEnemy : MonoBehaviour
     public static void DamageDealt()
     {
         hardEnemyHP = hardEnemyHP - 1f;
-
         Debug.Log("HP = " + hardEnemyHP);
-        /*if (hardEnemyHP == 0)
-        {
-            Destroy(hardEnemyPrefab.gameObject);
-        }*/
     }
 }
