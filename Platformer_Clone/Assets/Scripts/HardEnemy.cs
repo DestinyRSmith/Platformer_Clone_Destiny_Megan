@@ -29,9 +29,6 @@ public class HardEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (transform.position.x <= startingX + travelDistanceRight)
-        {
             if (player.transform.position.x > transform.position.x)
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
@@ -40,7 +37,6 @@ public class HardEnemy : MonoBehaviour
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
             }
-        }
     }
     public static void DamageDealt()
     {
