@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemyCount = RegularBullet.deathCount;
         //side to side movement
         if (Input.GetKey(KeyCode.A))
         {
@@ -85,19 +86,7 @@ public class PlayerController : MonoBehaviour
             transform.position = startPosition;
         }
 
-        if (enemyCount >= 4f)
-        {
-            SceneManager.LoadScene(2);
-        }
-        else if (enemyCount >= 8f && heavyBullets == true)
-        {
-            SceneManager.LoadScene(3);
-        }
-        else if (enemyCount >= 12f && jumpPack == true)
-        {
-            SceneManager.LoadScene(4);
-        }
-        else if (enemyCount >= 18f)
+        if (enemyCount >= 10f)
         {
             SceneManager.LoadScene(6);
         }
@@ -105,6 +94,7 @@ public class PlayerController : MonoBehaviour
         GameOver();
         
     }
+
     public IEnumerator Blink()
     {
         firstHit = false;
@@ -202,6 +192,34 @@ public class PlayerController : MonoBehaviour
         {
             jumpPack = true;
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Portal1")
+        {
+            // Move the player to the teleport point's position stored on the portal object
+            transform.position = other.gameObject.GetComponent<Portal>().spawnPoint1.transform.position;
+            startPosition = transform.position;
+        }
+
+        if (other.gameObject.tag == "Portal2" && heavyBullets == true)
+        {
+            transform.position = other.gameObject.GetComponent<Portal>().spawnPoint2.transform.position;
+            startPosition = transform.position;
+        }
+        else
+        {
+            Debug.Log("Need to get heavy bullets.");
+        }
+
+        if (other.gameObject.tag == "Portal3" && jumpPack == true)
+        {
+            enemyCount = 0;
+            transform.position = other.gameObject.GetComponent<Portal>().spawnPoint3.transform.position;
+            startPosition = transform.position;
+        }
+        else
+        {
+            Debug.Log("Need to get jump pack.");
         }
 
     }

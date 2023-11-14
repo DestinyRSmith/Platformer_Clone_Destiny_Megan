@@ -18,8 +18,8 @@ public class NewBehaviourScript : MonoBehaviour
     private bool movingRight = true;
     public float totalEnemyHP = 1f;
 
-    public int deathCount = 0;
-    public bool stillAlive = true;
+    //public int deathCount = 0;
+    //public bool stillAlive = true;
 
     // Start is called before the first frame update
     void Start()

@@ -14,6 +14,9 @@ TagManager:
   - ExtraHealth
   - BossEnemy
   - HeavyBullet
+  - Portal1
+  - Portal2
+  - Portal3
   layers:
   - Default
   - TransparentFX
