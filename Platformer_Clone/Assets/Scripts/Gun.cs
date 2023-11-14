@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Destiny Smith
+// 11/9/23
+// Controls gun mechanics
 public class Gun : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -15,10 +18,12 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        // gun follows player movement
         transform.position = player.GetComponent<PlayerController>().transform.position;
         gunPos = transform.position;
         transform.rotation = gunRot;
 
+        // when player faces right, gun is one unit to the right
         if (player.GetComponent<PlayerController>().facingRight == true)
         {
             gunPos.x += 1f;
@@ -28,7 +33,7 @@ public class Gun : MonoBehaviour
                 transform.Rotate(Vector3.up * -90);
             }
         }
-
+        // when player faces left, gun is one unit to the left and rotates 90 degrees
         if (player.GetComponent<PlayerController>().facingLeft == true)
         {
             gunPos.x -= 1f;
@@ -40,6 +45,7 @@ public class Gun : MonoBehaviour
 
         }
 
+        // When enter key is pressed, bullets shoot
         if (Input.GetKeyDown(KeyCode.Return))
         {
             if (canShoot == true)
@@ -58,6 +64,10 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Delays the gun 2 seconds after each fire
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ShootDelay()
     {
         canShoot = false;

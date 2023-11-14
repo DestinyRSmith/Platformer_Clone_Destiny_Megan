@@ -47,11 +47,16 @@ public class BossEnemy : MonoBehaviour
         }
         Movement();
     }
+    // deals damage to Boss's HP
     public static void BossDamage()
     {
         totalEnemyHP = totalEnemyHP - 1f;
         Debug.Log("HP = " + totalEnemyHP);
     }
+
+    /// <summary>
+    /// Handles jumping movement for Boss Enemy
+    /// </summary>
     public void Jumping()
     {
         if (!waiting)
@@ -90,12 +95,20 @@ public class BossEnemy : MonoBehaviour
 
         }
     }
+    /// <summary>
+    /// Pauses the Bosses movement for a certain amount of time
+    /// </summary>
+    /// <param name="secondsToWait"></param>
+    /// <returns></returns>
     IEnumerator Wait(float secondsToWait)
     {
         waiting = true;
         yield return new WaitForSeconds(secondsToWait);
         waiting = false;
     }
+    /// <summary>
+    /// Handles side to side movement for Boss Enemy
+    /// </summary>
     public void Movement()
     {
         if (movingRight)

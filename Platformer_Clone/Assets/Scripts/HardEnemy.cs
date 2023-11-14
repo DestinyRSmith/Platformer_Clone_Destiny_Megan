@@ -38,6 +38,10 @@ public class HardEnemy : MonoBehaviour
                 transform.position += Vector3.left * speed * Time.deltaTime;
             }
     }
+
+    /// <summary>
+    /// Handles damage dealt to enemy
+    /// </summary>
     public static void DamageDealt()
     {
         hardEnemyHP = hardEnemyHP - 1f;
