@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
         //For switching to heavy bullets
         if (heavyBullets == true)
         {
-            bullet.gameObject.SetActive(false);
-            heavyBullet.gameObject.SetActive(true);
+            //bullet.gameObject.SetActive(false);
+            //heavyBullet.gameObject.SetActive(true);
         }
 
         // Rspawns the player and take 15 HP if they fall off the map
@@ -85,13 +85,13 @@ public class PlayerController : MonoBehaviour
             transform.position = startPosition;
         }
 
-        /*
+        
         // Loads victory scene when player kills all enemies in the final level
-        if (enemyCount >= 10f)
+        if (enemyCount >= 8f)
         {
             SceneManager.LoadScene(6);
         }
-        */
+        
 
         GameOver();
         
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             }
             if (canTakeDamage == true)
             {
-                totalHP = totalHP - 15f;
+                //totalHP = totalHP - 15f;
             }
             Debug.Log("Total HP = " + totalHP);
             
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
             }
             if (canTakeDamage == true)
             {
-                totalHP = totalHP - 35f;
+                //totalHP = totalHP - 35f;
             }
             Debug.Log("Total HP = " + totalHP);
         }
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
             }
             if (canTakeDamage == true)
             {
-                totalHP = totalHP - 20f;
+                //totalHP = totalHP - 20f;
             }
             Debug.Log("Total HP = " + totalHP);
         }

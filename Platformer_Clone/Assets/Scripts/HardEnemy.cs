@@ -10,12 +10,14 @@ public class HardEnemy : MonoBehaviour
 {
     //public static GameObject hardEnemyPrefab;
     public float speed;
-    public static float hardEnemyHP = 10f;
+    public float hardEnemyHP = 3f;
     public GameObject player;
     private float startingX;
-    private bool movingRight = true;
-    public float travelDistanceRight = 7;
-    public float travelDistanceLeft = 7;
+    public bool movingRight = true;
+    //public float travelDistanceRight = 7;
+    //public float travelDistanceLeft = 7;
+    public GameObject leftBarrier;
+    public GameObject rightBarrier;
 
     /*
     public float lvl1MaxX = 34f;
@@ -39,18 +41,29 @@ public class HardEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movingRight == true)
-        {
-            if (transform.position.x <= startingX + travelDistanceRight)
+            if (player.transform.position.x > transform.position.x)
             {
-                if (player.transform.position.x > transform.position.x)
-                {
-                    transform.position += Vector3.right * speed * Time.deltaTime;
-                }
-                else
-                {
-                    transform.position += Vector3.left * speed * Time.deltaTime;
-                }
+                movingRight = true;
+            }
+            else
+            {
+                movingRight = false;
+            }
+
+        if (movingRight)
+        {
+            //if the object is not farther than the startposition + right travel dist, it can move right
+            if (transform.position.x <= rightBarrier.transform.position.x)
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            }
+        }
+        else
+        {
+            //if the object is not farther than the start position + left travel dist, it can move left
+            if (transform.position.x >= leftBarrier.transform.position.x)
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
             }
         }
     }
@@ -58,12 +71,12 @@ public class HardEnemy : MonoBehaviour
     /// <summary>
     /// Handles damage dealt to enemy
     /// </summary>
-    public static void DamageDealt()
+    public void DamageDealt()
     {
         hardEnemyHP = hardEnemyHP - 1f;
         Debug.Log("HP = " + hardEnemyHP);
     }
-    public static void DealingDamage()
+    public void DealingDamage()
     {
         hardEnemyHP = hardEnemyHP - 3f;
         Debug.Log("HP = " + hardEnemyHP);

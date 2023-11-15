@@ -85,22 +85,23 @@ public class RegularBullet : MonoBehaviour
             {
                 if (player.heavyBullets == true)
                 {
-                    HardEnemy.DealingDamage();
+                    hit.collider.GetComponent<HardEnemy>().DealingDamage();
                 }
                 else
                 {
-                    HardEnemy.DamageDealt();
+                    hit.collider.GetComponent<HardEnemy>().DamageDealt();
                 }
-                if (HardEnemy.hardEnemyHP <= 0)
+                if (hit.collider.GetComponent<HardEnemy>().hardEnemyHP <= 0)
                 {
                     deathCount++;
                     Destroy(hit.collider.gameObject);
                 }
-                Destroy(bulletPrefab.gameObject);
+                Destroy(gameObject);
                 
             }
             if (hit.collider.tag == "Enemy")
             {
+                Debug.Log("hit regualar enemy.");
                 deathCount++;
                 Destroy(hit.collider.gameObject);
                 Destroy(bulletPrefab.gameObject);
@@ -108,8 +109,8 @@ public class RegularBullet : MonoBehaviour
             if (hit.collider.tag == "BossEnemy")
             {
                 Debug.Log("Hit Boss");
-                BossEnemy.BossDamage();
-                if (BossEnemy.totalEnemyHP == 0)
+                hit.collider.GetComponent<BossEnemy>().BossDamage();
+                if (hit.collider.GetComponent<BossEnemy>().totalEnemyHP <= 0)
                 {
                     deathCount++;
                     Destroy(hit.collider.gameObject);

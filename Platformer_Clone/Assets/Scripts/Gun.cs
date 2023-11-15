@@ -81,6 +81,7 @@ public class Gun : MonoBehaviour
     private void ShootBullet()
     {
         GameObject bulletDirection = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bulletDirection.GetComponent<RegularBullet>().player = player.GetComponent<PlayerController>();
         bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerController>().facingRight;
         bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerController>().facingLeft;
         bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerController>().transform.position;
@@ -90,6 +91,7 @@ public class Gun : MonoBehaviour
     private void ShootHeavyBullet()
     {
         GameObject bulletDirection = Instantiate(heavyBulletPrefab, transform.position, transform.rotation);
+        bulletDirection.GetComponent<RegularBullet>().player = player.GetComponent<PlayerController>();
         bulletDirection.GetComponent<RegularBullet>().faceRight = player.GetComponent<PlayerController>().facingRight;
         bulletDirection.GetComponent<RegularBullet>().faceLeft = player.GetComponent<PlayerController>().facingLeft;
         bulletDirection.GetComponent<RegularBullet>().originPosRight = player.GetComponent<PlayerController>().transform.position;

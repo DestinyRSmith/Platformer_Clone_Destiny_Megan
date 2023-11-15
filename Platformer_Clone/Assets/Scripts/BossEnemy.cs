@@ -13,7 +13,7 @@ public class BossEnemy : MonoBehaviour
     public float travelDistanceRight = 0;
     public float travelDistanceLeft = 0;
     private bool movingRight = true;
-    public static float totalEnemyHP = 100f;
+    public float totalEnemyHP = 20f;
     public bool JumpMode = true;
 
     public GameObject topPosObject;
@@ -48,7 +48,7 @@ public class BossEnemy : MonoBehaviour
         Movement();
     }
     // deals damage to Boss's HP
-    public static void BossDamage()
+    public void BossDamage()
     {
         totalEnemyHP = totalEnemyHP - 3f;
         Debug.Log("HP = " + totalEnemyHP);
